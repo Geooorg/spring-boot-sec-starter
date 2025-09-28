@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Set;
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -34,7 +34,7 @@ public class DataInitializer {
             User admin = new User();
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("admin123"));
-            admin.setRoles(Set.of(adminRole));
+            admin.setRoles(List.of(adminRole));
             userRepository.save(admin);
         }
 
@@ -43,7 +43,7 @@ public class DataInitializer {
             User user = new User();
             user.setUsername("user");
             user.setPassword(passwordEncoder.encode("user123"));
-            user.setRoles(Set.of(userRole));
+            user.setRoles(List.of(userRole));
             userRepository.save(user);
         }
 
@@ -52,7 +52,7 @@ public class DataInitializer {
             User guest = new User();
             guest.setUsername("guest");
             guest.setPassword(passwordEncoder.encode("guest123"));
-            guest.setRoles(Set.of(guestRole));
+            guest.setRoles(List.of(guestRole));
             userRepository.save(guest);
         }
     }
