@@ -11,13 +11,14 @@ A Spring Boot application with H2 database and role-based security.
   - User (username: `user`, password: `user123`)
   - Guest (username: `guest`, password: `guest123`)
 
-## API Endpoints
+## Authentication
 
-### Public (No authentication required)
-- `GET /api/public/hello` - Public endpoint
+Die Anwendung verwendet HTTP Basic Authentication. 
+Für geschützte Endpoints müssen Sie einen Authorization-Header mit Base64-codierten Credentials senden, z.B.
 
-### Guest (Requires GUEST, USER, or ADMIN role)
-- `GET /api/guest/hello` - Guest endpoint
+```bash
+curl -v -H 'Authorization: Basic YWRtaW46YWRtaW4xMjM=' localhost:8080/api/admin/hello 
+```
 
 ### User (Requires USER or ADMIN role)
 - `GET /api/user/hello` - User endpoint
